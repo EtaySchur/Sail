@@ -1,0 +1,8 @@
+<h3 class="pie-chart-title" ng-show="pieChartCtrl.totalSize > 0"> Content ({{pieChartCtrl.totalSize}} GB)  </h3>
+<div class="row">
+    <div class="col-sm-12">
+        <nvd3 options="pieChartCtrl.options" data="pieChartCtrl.items"></nvd3>
+    </div>
+</div>
+
+

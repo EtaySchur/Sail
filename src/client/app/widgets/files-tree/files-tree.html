@@ -1,0 +1,35 @@
+
+<!-- Nested node template -->
+<script type="text/ng-template" id="nodes_renderer.html">
+    <div     ng-class="{'active' : node.id === filesTreeCtrl.selectedFolder.id}" style="margin-left: 5px" class="tree-node tree-node-content et-ui-tree">
+        <a    ng-init="filesTreeCtrl.toggle(this)"  ng-if="node.hasChildren" data-nodrag ng-click="filesTreeCtrl.toggle(this , node)">
+            <span class="glyphicon"
+                  ng-class="{'fa fa-plus-square-o': collapsed,'fa fa-minus-square-o': !collapsed }"></span>
+        </a>
+        <span class="glyphicon"
+              ng-class="{'fa  fa-folder': collapsed,'fa fa-folder-open-o': !collapsed  }"></span>
+        <span class="folder-title" ng-click="filesTreeCtrl.folderClicked(node)" ng-bind="node.title"> </span>
+    </div>
+    <ol ui-tree-nodes="" ng-model="node.nodes" ng-class="{hidden: collapsed}">
+        <li   ng-repeat="node in node.nodes" ui-tree-node ng-include="'nodes_renderer.html'">
+
+        </li>
+    </ol>
+</script>
+
+
+
+<div class="row">
+    <div class="col-sm-12">
+        <span ng-hide="filesTreeCtrl.browse" ng-click="filesTreeCtrl.browse = true" class="fa clickable fa-plus-square-o"> </span>
+        <span  ng-show="filesTreeCtrl.browse" ng-click="filesTreeCtrl.collapseAll()" class="fa fa fa-minus-square-o clickable"> </span>
+        <p>  Localhost - fileserver mini filter </p>
+        <div ng-show="filesTreeCtrl.browse" ui-tree id="tree-root">
+            <ol ui-tree-nodes ng-model="filesTreeCtrl._treeModel">
+                <li  ng-repeat="node in filesTreeCtrl._treeModel" ui-tree-node ng-include="'nodes_renderer.html'"></li>
+            </ol>
+        </div>
+    </div>
+
+
+</div>

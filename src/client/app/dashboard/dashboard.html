@@ -1,0 +1,14 @@
+<section class="mainbar">
+    <section class="matter">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-3">
+                    <et-tree-view expand-folder-callback="fileTypesCtrl.expandFolder($folder)" folder-click-callback="fileTypesCtrl.handleFolderClick($folder)" tree-model="fileTypesCtrl.folders"></et-tree-view>
+                </div>
+                <div class="col-sm-6">
+                    <et-pie-chart options="fileTypesCtrl.chartOptions" items="fileTypesCtrl.files"> </et-pie-chart>
+                </div>
+            </div>
+        </div>
+    </section>
+</section>
